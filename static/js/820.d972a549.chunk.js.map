@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/820.d972a549.chunk.js","mappings":"iJAAA,MAIA,EAJaA,KACLC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,Y","sources":["pages/Home/HomePage.jsx"],"sourcesContent":["const Home = () => {\r\n\treturn <div>HomePage</div>;\r\n};\r\n\r\nexport default Home;\r\n"],"names":["Home","_jsx","children"],"sourceRoot":""}
