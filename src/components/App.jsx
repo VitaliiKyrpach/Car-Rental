@@ -16,6 +16,7 @@ const Redirect = () => {
 	});
 	return null;
 };
+console.log(Redirect)
 
 function App() {
 	return (
