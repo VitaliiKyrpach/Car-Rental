@@ -1,12 +1,19 @@
+import svg from '../../img/sprite.svg'
 import css from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Container } from "../Container/Container";
 
 export const Header = () => {
 	return (
-		<header>
+		<header className={css.header}>
 			<Container>
 				<nav className={css.headerWrapper}>
+					<Link className={css.logo} to="/">
+					<svg className={css.logoSVG}>
+						<use href={`${svg}#icon-logo`} ></use>
+					</svg>
+					<span className={css.text}>CarRental</span>
+					</Link>
 					<div className={css.navBar}>
 						<NavLink className={css.link} to="/">
 							Home
