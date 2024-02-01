@@ -8,7 +8,7 @@
 	height: 700px;
 	background-image: url("../../img/carsBack.gif");
 	background-repeat: no-repeat;
-	background-size: contain;
+	background-size: cover;
 	/* height: auto; */
 }
 
