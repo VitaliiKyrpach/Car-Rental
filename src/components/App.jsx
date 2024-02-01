@@ -16,7 +16,6 @@ const Redirect = () => {
 	});
 	return null;
 };
-console.log(Redirect)
 
 function App() {
 	return (
@@ -25,9 +24,9 @@ function App() {
 				<Route index element={<Home />}></Route>
 				<Route path="catalog" element={<Catalog />}></Route>
 				<Route path="favorites" element={<Favorites />}></Route>
-				<Route path="*" element={<Home />}></Route>
+				{/* <Route path="*" element={<Home />}></Route> */}
 			</Route>
-			{/* <Route path="*" element={<Redirect />}></Route> */}
+			<Route path="*" element={<Redirect />}></Route>
 		</Routes>
 	);
 }
