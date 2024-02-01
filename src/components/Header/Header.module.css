@@ -1,4 +1,4 @@
-.header{
+.header {
 	display: flex;
 	align-items: center;
 	height: 100px;
@@ -10,7 +10,6 @@
 	justify-content: space-between;
 	width: 100%;
 	margin: 0 auto;
-	
 }
 .link {
 	padding: 14px 36px;
@@ -21,7 +20,11 @@
 	font-weight: 500;
 	font-size: 18px;
 }
-.logo{
+.linkActive {
+	color: var(--color-primary-light);
+	background-color: var(--color-accent);
+}
+.logo {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -30,17 +33,17 @@
 	font-size: 20px;
 	text-decoration: none;
 }
-.logoSVG{
+.logoSVG {
 	fill: var(--color-primary-dark);
 	width: 30px;
 	height: 30px;
 }
-.text{
+.text {
 	position: relative;
 	top: 5px;
-	color: var(--color-primary-dark);;
+	color: var(--color-primary-dark);
 }
-.navBar{
+.navBar {
 	display: flex;
 	gap: 15px;
 }

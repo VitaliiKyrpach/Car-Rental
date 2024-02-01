@@ -42,6 +42,7 @@
 	--color-primary-light: #f7f7fb;
 	--color-secondary-light: #f0f0f0;
 	--color-light: #fff;
+	--color-accent: #3470ff;
 }
 * {
 	box-sizing: border-box;
