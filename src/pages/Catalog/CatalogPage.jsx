@@ -3,6 +3,7 @@ import { Container } from "../../components/Container/Container";
 import { useEffect } from "react";
 import { fetchCatalog } from "../../redux/catalogOperations";
 import { selectCatalog } from "../../redux/catalogSelectors";
+import { CatalogList } from "../../components/CatalogList/CatalogList";
 
 const Catalog = () => {
 	const data = useSelector(selectCatalog);
@@ -16,6 +17,7 @@ const Catalog = () => {
 	return (
 		<div>
 			<Container>
+				<CatalogList />
 				<p>CatalogPage</p>
 			</Container>
 		</div>
