@@ -1,96 +1,105 @@
-.card{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    width: 274px;
-    border-radius: 14px;
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	/* align-items: center; */
+	width: 274px;
+	border-radius: 14px;
 }
-.card:hover{
-    transform: scale(1.01);
+.card:hover {
+	transform: scale(1.01);
 }
-.cardHeart{
-    position: absolute;
-    top:14px;
-    right: 14px;
-    width: 18px;
-    height: 18px;
-    fill: rgba(255, 255, 255, 0.8);
-    z-index: 3;
-    cursor: pointer;
+.cardHeart {
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	width: 18px;
+	height: 18px;
+	fill: rgba(255, 255, 255, 0.8);
+	z-index: 3;
+	cursor: pointer;
 }
-.imgWrapper{
-    position: relative;
-    border-radius: 14px;
-    height: 268px;
-    background-image: linear-gradient( rgba(18, 20, 23, 0.5),  rgba(18, 20, 23, 0));
-    overflow: hidden;
-    margin-bottom: 14px;
+.imgWrapper {
+	position: relative;
+	border-radius: 14px;
+	height: 268px;
+	background-image: linear-gradient(
+		rgba(18, 20, 23, 0.5),
+		rgba(18, 20, 23, 0)
+	);
+	overflow: hidden;
+	margin-bottom: 14px;
 }
-.cardImg{
-    position: relative;
-    height: 100%;
-    z-index: -1; 
+.cardImg {
+	position: relative;
+	height: 100%;
+	z-index: -1;
 }
-.titleWrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 500;
-    margin-bottom: 8px;
+.title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 500;
+	margin-bottom: 8px;
 }
-.cardTitle{
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 500;
+.titleWrapper {
+	display: flex;
+	align-items: baseline;
+	gap: 3px;
 }
-.colorAccent{
-    color: var(--color-accent);
+.carModel {
+	display: block;
+	max-width: 100px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
-.infoWrapper{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 28px;
+.colorAccent {
+	color: var(--color-accent);
 }
-.infoList{
-    max-width: 274px;
-    overflow: hidden;
-    white-space: nowrap;
-    list-style-type: none;
-    display: flex;
-    gap: 10px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: var(--color-secondary-dark);
+.infoWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin-bottom: 28px;
 }
-.infoItem{
-    position: relative;
-    max-width: 100%;
-    text-overflow: ellipsis;
+.infoList {
+	max-width: 270px;
+	overflow: hidden;
+	white-space: nowrap;
+	list-style-type: none;
+	display: flex;
+	gap: 10px;
+	font-size: 12px;
+	line-height: 1.5;
+	color: var(--color-secondary-dark);
+}
+.dots {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.infoItem {
+	position: relative;
+	max-width: 100%;
 }
 .infoItem:not(:last-child):after {
-    position: absolute;
-    right: -6px;
-    height: 18px;
-    content:'|';
+	position: absolute;
+	right: -6px;
+	height: 18px;
+	content: "|";
 }
 
-.cardBtn{
-    font-size: 14px;
-    line-height: 1.42;
-    font-weight: 600;
-    color: var(--color-light);
-    background-color: var(--color-accent);
-    border-radius: 12px;
-    height: 44px;
-    border: none;
-    cursor: pointer;
-}
-.accessories{
-    text-overflow: ellipsis; /* enables ellipsis */
-    white-space: nowrap; /* keeps the text in a single line */
-    overflow: hidden;
+.cardBtn {
+	font-size: 14px;
+	line-height: 1.42;
+	font-weight: 600;
+	color: var(--color-light);
+	background-color: var(--color-accent);
+	border-radius: 12px;
+	height: 44px;
+	border: none;
+	cursor: pointer;
 }

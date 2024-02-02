@@ -1,0 +1,17 @@
+.button {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	font-size: 16px;
+	line-height: 1.5;
+	font-weight: 500;
+	text-decoration: underline;
+	color: var(--color-accent);
+	background-color: transparent;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.button:hover {
+	color: #0b44cd;
+}

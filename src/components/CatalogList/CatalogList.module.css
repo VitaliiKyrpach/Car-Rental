@@ -1,7 +1,8 @@
-.list{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    row-gap: 50px;
-    column-gap: 29px;
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	row-gap: 50px;
+	column-gap: 29px;
+	margin: 0 auto 100px;
 }

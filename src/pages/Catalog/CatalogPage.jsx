@@ -1,3 +1,4 @@
+import css from "./CatalogPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../../components/Container/Container";
 import { useEffect } from "react";
@@ -16,10 +17,10 @@ const Catalog = () => {
 	}, [dispatch, data]);
 	console.log(data);
 	return (
-		<div>
-			<CatalogFilter/>
+		<div className={css.catalog}>
+			<CatalogFilter />
 			<Container>
-				<CatalogList data={data}/>
+				<CatalogList data={data} />
 			</Container>
 		</div>
 	);
