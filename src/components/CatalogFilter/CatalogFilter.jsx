@@ -1,4 +1,9 @@
+import { Container } from "../Container/Container";
 import css from "./CatalogFilter.module.css";
 export const CatalogFilter = () => {
-	return <p className={css.filters}>Filters</p>;
+	return <div className={css.filters}>
+		<Container>
+		<p>Filters</p>
+		</Container>
+	</div>
 };

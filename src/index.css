@@ -39,6 +39,7 @@
 }
 :root {
 	--color-primary-dark: #121417;
+	--color-secondary-dark: rgba(18, 20, 23, 0.5);
 	--color-primary-light: #f7f7fb;
 	--color-secondary-light: #f0f0f0;
 	--color-light: #fff;
@@ -59,6 +60,12 @@ li {
 	padding: 0;
 	margin: 0;
 }
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+  }
 
 body {
 	margin: 0;

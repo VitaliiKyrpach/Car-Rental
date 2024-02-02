@@ -1,0 +1,10 @@
+.filters{
+    margin-top: 100px;
+    margin-bottom: 50px;
+    padding: 14px;
+    font-size: 18px;
+    line-height: 1.15;
+    font-weight: 500;
+    color: var(--color-primary-dark);
+    background-color: var(--color-primary-light);
+}
