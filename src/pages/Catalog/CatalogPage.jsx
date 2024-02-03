@@ -15,11 +15,11 @@ const Catalog = () => {
 			dispatch(fetchCatalog());
 		}
 	}, [dispatch, data]);
-	console.log(data);
+	// console.log(data);
 	return (
 		<div className={css.catalog}>
-			<CatalogFilter />
 			<Container>
+				<CatalogFilter />
 				<CatalogList data={data} />
 			</Container>
 		</div>

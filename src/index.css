@@ -42,8 +42,10 @@
 	--color-secondary-dark: rgba(18, 20, 23, 0.5);
 	--color-primary-light: #f7f7fb;
 	--color-secondary-light: #f0f0f0;
+	--color-secondary-darker: #cbcbcb;
 	--color-light: #fff;
 	--color-accent: #3470ff;
+	--color-accent-dark: #0b44cd;
 }
 * {
 	box-sizing: border-box;
@@ -74,4 +76,7 @@ body {
 	font-weight: 400;
 	line-height: 1.25;
 	color: var(--color-primary-dark);
+}
+body::-webkit-scrollbar {
+	display: none;
 }

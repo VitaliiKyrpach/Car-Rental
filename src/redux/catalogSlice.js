@@ -17,11 +17,20 @@ const catalogSlice = createSlice({
 		isLoading: false,
 		error: null,
 	},
-	// reducers: {
-	// 	handleSuccess(state, action) {
-	// 		state.success = action.payload;
-	// 	},
-	// },
+	reducers: {
+		addCard(state, action) {
+			console.log("add");
+			console.log(state.favorites);
+			state.favorites.push(action.payload);
+		},
+		removeCard(state, action) {
+			console.log("remove");
+			const index = state.favorites.findIndex(
+				(item) => item.id === action.payload
+			);
+			state.favorites.splice(index, 1);
+		},
+	},
 	extraReducers: (builder) =>
 		builder
 			.addCase(fetchCatalog.pending, handlePending)
@@ -33,4 +42,5 @@ const catalogSlice = createSlice({
 			}),
 });
 
+export const { addCard, removeCard } = catalogSlice.actions;
 export const catalogReducer = catalogSlice.reducer;

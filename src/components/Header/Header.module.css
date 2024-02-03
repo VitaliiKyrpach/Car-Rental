@@ -19,10 +19,17 @@
 	text-decoration: none;
 	font-weight: 500;
 	font-size: 18px;
+	transition: background-color 100ms linear;
+}
+.link:hover {
+	background-color: var(--color-secondary-darker);
 }
 .linkActive {
 	color: var(--color-primary-light);
 	background-color: var(--color-accent);
+}
+.linkActive:hover {
+	background-color: var(--color-accent-dark);
 }
 .logo {
 	position: relative;

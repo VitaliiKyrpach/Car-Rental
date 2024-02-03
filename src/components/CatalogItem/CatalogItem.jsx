@@ -1,15 +1,39 @@
 import css from "./CatalogItem.module.css";
 import svg from "../../img/sprite.svg";
-import { useRef } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/catalogSelectors";
+import { addCard, removeCard } from "../../redux/catalogSlice";
 
-export const CatalogItem = ({ data }) => {
-	const listRef = useRef(null);
+export const CatalogItem = ({ data, modal }) => {
+	const [like, setLike] = useState(false);
+	const dispatch = useDispatch();
+	const favorites = useSelector(selectFavorites);
 	const address = data.address.split(", ");
+	const isLiked =
+		favorites.length && favorites.find((card) => card.id === data.id);
 
+	useEffect(() => {
+		isLiked ? setLike(true) : setLike(false);
+	}, [isLiked]);
+
+	const handleLike = () => {
+		!isLiked
+			? dispatch(addCard(data))
+			: dispatch(removeCard(data.id));
+		setLike(!like);
+	};
 	return (
 		<li className={css.card}>
-			<svg className={css.cardHeart}>
-				<use href={`${svg}#icon-heart`}></use>
+			<svg
+				className={`${css.cardHeart} ${like && css.heartActive}`}
+				onClick={handleLike}
+			>
+				{like ? (
+					<use href={`${svg}#icon-heart-active`}></use>
+				) : (
+					<use href={`${svg}#icon-heart`}></use>
+				)}
 			</svg>
 			<div className={css.imgWrapper}>
 				<img className={css.cardImg} src={data.img} alt="car" />
@@ -25,13 +49,13 @@ export const CatalogItem = ({ data }) => {
 				<p>{data.rentalPrice}</p>
 			</div>
 			<div className={css.infoWrapper}>
-				<ul className={css.infoList} ref={listRef}>
+				<ul className={css.infoList}>
 					<li className={css.infoItem}>{address[1]}</li>
 					<li className={css.infoItem}>{address[2]}</li>
 					<li className={css.infoItem}>{data.rentalCompany}</li>
 					<li className={`${css.infoItem} ${css.dots}`}>Premium</li>
 				</ul>
-				<ul className={css.infoList} ref={listRef}>
+				<ul className={css.infoList}>
 					<li className={css.infoItem}>{data.type}</li>
 					<li className={css.infoItem}>{data.make}</li>
 					<li className={css.infoItem}>{data.mileage}</li>
@@ -40,7 +64,11 @@ export const CatalogItem = ({ data }) => {
 					</li>
 				</ul>
 			</div>
-			<button type="button" className={css.cardBtn}>
+			<button
+				type="button"
+				className={css.cardBtn}
+				onClick={() => modal(data)}
+			>
 				Learn more
 			</button>
 		</li>
