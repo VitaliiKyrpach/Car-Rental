@@ -11,6 +11,7 @@ import {
 	REGISTER,
 } from "redux-persist";
 
+import { filterReducer } from "./filterSlice";
 import { reducer } from "./catalogReducer";
 
 const persistConfig = {
@@ -22,6 +23,7 @@ const persistConfig = {
 export const store = configureStore({
 	reducer: {
 		catalog: persistReducer(persistConfig, reducer),
+		filters: filterReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({

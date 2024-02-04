@@ -133,6 +133,10 @@
 	cursor: pointer;
 	transition: background-color 100ms linear;
 }
+.tel {
+	color: var(--color-light);
+	text-decoration: none;
+}
 .button:hover {
 	background-color: var(--color-accent-dark);
 }

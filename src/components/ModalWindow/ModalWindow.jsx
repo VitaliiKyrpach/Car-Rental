@@ -115,7 +115,9 @@ export const ModalWindow = ({ data, onClose }) => {
 						</ul>
 					</div>
 					<button className={css.button} type="button">
-						Rental car
+						<a className={css.tel} href="tel:+380730000000">
+							Rental car
+						</a>
 					</button>
 				</div>
 			</div>

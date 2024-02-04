@@ -2,8 +2,11 @@ import svg from "../../img/sprite.svg";
 import css from "./Header.module.css";
 import { Link, NavLink } from "react-router-dom";
 import { Container } from "../Container/Container";
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/catalogSelectors";
 
 export const Header = () => {
+	const favorites = useSelector(selectFavorites);
 	const classNameFunc = ({ isActive }) =>
 		`${css.link} ${isActive && css.linkActive}`;
 	return (
@@ -23,7 +26,12 @@ export const Header = () => {
 						<NavLink className={classNameFunc} to="/catalog">
 							Catalog
 						</NavLink>
-						<NavLink className={classNameFunc} to="/favorites">
+						<NavLink
+							className={
+								favorites.length ? classNameFunc : css.disabled
+							}
+							to="/favorites"
+						>
 							Favorites
 						</NavLink>
 					</div>

@@ -1,28 +1,69 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import css from "./CatalogFilter.module.css";
 import svg from "../../img/sprite.svg";
-const initOpen = { brand: false, price: false };
+import brands from "../../helpers/makes.json";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	selectCatalog,
+	// selectFilters,
+} from "../../redux/catalogSelectors";
+import { createPrice } from "../../helpers/priceMarkup.js";
+import { interFilter } from "../../redux/filterSlice.js";
+
+const initOpen = { brand: false, prices: false };
+
 export const CatalogFilter = () => {
-	// const [categories, setCategories] = useState(null);
-	// const [query, setQuery] = useState("");
+	const [brand, setQuery] = useState("");
+	const [price, setPrices] = useState("");
+	const [mileageFrom, setMileageFrom] = useState("");
+	const [mileageTo, setMileageTo] = useState("");
 	const [isOpen, setOpen] = useState(initOpen);
-	// const handleOpen = (e) => {
-	// 	const type = e.currentTarget.dataset.type;
-	// 	setOpen((prev) => ({ ...initOpen, [type]: !prev[type] }));
-	// };
-	console.log(setOpen);
+	const cars = useSelector(selectCatalog);
+	const dispatch = useDispatch();
+	const handleOpen = (e) => {
+		const type = e.currentTarget.dataset.type;
+		setOpen((prev) => ({ ...initOpen, [type]: !prev[type] }));
+	};
+	const handleQuery = (e) => {
+		const type = e.currentTarget.dataset.type;
+		type === "brand" && setQuery(e.target.value);
+		type === "mileFrom" && setMileageFrom(e.target.value);
+		type === "mileTo" && setMileageTo(e.target.value);
+	};
+	const handlePick = (e) => {
+		if (e.target.nodeName !== "LI") return;
+		const type = e.currentTarget.dataset.type;
+		const value = e.target.textContent;
+		type === "brands" ? setQuery(value) : setPrices(value);
+		setOpen(initOpen);
+	};
+	const priceArr = useMemo(() => createPrice(cars), [cars]);
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch(interFilter({ brand, price, mileageFrom, mileageTo }));
+
+		// setBrand('');
+		// setPrice('');
+		// setMileageFrom('');
+		// setMileageTo('');
+	};
+
 	return (
 		<div className={css.filters}>
-			<form className={css.form}>
+			<form className={css.form} onSubmit={handleSubmit}>
 				<div className={css.field}>
+					<p className={css.title}>Car brand</p>
 					<input
 						className={`${css.input} ${css.brand}`}
 						type="text"
 						placeholder="Enter the text"
 						id="brandSearch"
 						data-type="brand"
-						// onChange={handleQuery}
-						// value={query}
+						onClick={handleOpen}
+						onChange={handleQuery}
+						value={brand}
+						autoComplete="off"
 					/>
 					<svg
 						className={`${css.arrowSvg} ${
@@ -31,51 +72,54 @@ export const CatalogFilter = () => {
 					>
 						<use href={`${svg}#icon-arrow`}></use>
 					</svg>
-					{/* {isOpen.brand && (
+					{isOpen.brand && (
 						<div className={css.filterListWrapper}>
 							<ul
 								className={css.filterList}
 								onClick={handlePick}
-								data-type="category"
+								data-type="brands"
 							>
-								{categories.map((item, index) => {
-									return (
-										<li className={css.filterItem} key={index}>
-											{item}
-										</li>
-									);
-								})}
+								{brands
+									.filter((item) =>
+										item
+											.toLowerCase()
+											.includes(brand.toLowerCase().trim())
+									)
+									.map((item, index) => {
+										return (
+											<li className={css.filterItem} key={index}>
+												{item}
+											</li>
+										);
+									})}
 							</ul>
 						</div>
-					)} */}
+					)}
 				</div>
 				<div className={css.field}>
+					<p className={css.title}>Price/ 1 hour</p>
 					<div
 						className={`${css.input} ${css.price}`}
-						// onClick={handleOpen}
+						onClick={handleOpen}
 						data-type="price"
 					>
-						To
-						{/* {filters.category === ""
-							? ""
-							: filters.category} */}
-						$
+						To {price === "" ? "" : price}$
 					</div>
 					<svg
 						className={`${css.arrowSvg} ${
-							isOpen.brand ? css.arrowDown : ""
+							isOpen.prices ? css.arrowDown : ""
 						}`}
 					>
 						<use href={`${svg}#icon-arrow`}></use>
 					</svg>
-					{/* {isOpen.price && (
+					{isOpen.price && (
 						<div className={css.filterListWrapper}>
 							<ul
 								className={css.filterList}
 								onClick={handlePick}
-								data-type="category"
+								data-type="prices"
 							>
-								{categories.map((item, index) => {
+								{priceArr.map((item, index) => {
 									return (
 										<li className={css.filterItem} key={index}>
 											{item}
@@ -84,26 +128,31 @@ export const CatalogFilter = () => {
 								})}
 							</ul>
 						</div>
-					)} */}
+					)}
 				</div>
 				<div className={css.mileage}>
+					<p className={css.title}>Сar mileage / km</p>
 					<p>From</p>
 					<p className={css.toText}>To</p>
 					<input
 						className={css.mileageFiled}
-						type="text"
+						type="number"
 						id="brandSearch"
-						// data-type="brand"
-						// onChange={handleQuery}
-						// value={query}
+						min={1}
+						data-type="mileFrom"
+						onChange={handleQuery}
+						value={mileageFrom}
+						autoComplete="off"
 					/>
 					<input
 						className={`${css.mileageFiled} ${css.to}`}
-						type="text"
+						type="number"
 						id="brandSearch"
-						// data-type="brand"
-						// onChange={handleQuery}
-						// value={query}
+						min={Number(mileageFrom) + 1}
+						data-type="mileTo"
+						onChange={handleQuery}
+						value={mileageTo}
+						autoComplete="off"
 					/>
 				</div>
 				<button className={css.formBtn} type="submit">

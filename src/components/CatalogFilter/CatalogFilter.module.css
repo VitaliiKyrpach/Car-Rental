@@ -15,9 +15,18 @@
 }
 .field {
 	position: relative;
-	/* width: 100%; */
+}
+.title {
+	position: absolute;
+	top: -20px;
+	left: 0;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.28;
+	color: #8a8a89;
 }
 .input {
+	font-family: "manrope", sans-serif;
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 1.12;
@@ -48,7 +57,7 @@
 	transform: scaleY(-100%);
 }
 .arrowDown {
-	transform: scaleY(-100%);
+	transform: scaleY(100%);
 }
 .mileage {
 	position: relative;
@@ -82,6 +91,11 @@
 	outline: none;
 	width: 90px;
 }
+.mileageFiled::-webkit-outer-spin-button,
+.mileageFiled::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
 .to {
 	left: calc(50% + 44px);
 	width: 100px;
@@ -105,4 +119,40 @@
 }
 .formBtn:hover {
 	background-color: var(--color-accent-dark);
+}
+.filterListWrapper {
+	position: absolute;
+	top: 50px;
+	width: 224px;
+	padding: 14px 18px;
+	padding-right: 7px;
+	background-color: var(--color-light);
+	border-radius: 12px;
+	border: 1px solid rgba(138, 137, 137, 0.2);
+	z-index: 5;
+}
+.filterList {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	height: auto;
+	max-height: 272px;
+	overflow-y: auto;
+}
+.filterList::-webkit-scrollbar {
+	width: 8px;
+}
+.filterList::-webkit-scrollbar-thumb {
+	background-color: rgba(18, 20, 23, 0.05);
+	border-radius: 10px;
+}
+.filterItem {
+	color: rgba(18, 20, 23, 0.2);
+	/* font-family: "Roboto", sans-serif; */
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.25;
+	background-color: transparent;
+	text-transform: capitalize;
+	cursor: pointer;
 }

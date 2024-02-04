@@ -21,6 +21,17 @@
 	font-size: 18px;
 	transition: background-color 100ms linear;
 }
+.disabled {
+	padding: 14px 36px;
+	background-color: var(--color-secondary-light);
+	border-radius: 10px;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 18px;
+	color: var(--color-secondary-darker);
+	pointer-events: none;
+	/* text-decoration: none; */
+}
 .link:hover {
 	background-color: var(--color-secondary-darker);
 }

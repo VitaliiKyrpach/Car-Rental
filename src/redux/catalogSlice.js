@@ -19,12 +19,9 @@ const catalogSlice = createSlice({
 	},
 	reducers: {
 		addCard(state, action) {
-			console.log("add");
-			console.log(state.favorites);
 			state.favorites.push(action.payload);
 		},
 		removeCard(state, action) {
-			console.log("remove");
 			const index = state.favorites.findIndex(
 				(item) => item.id === action.payload
 			);

@@ -1,0 +1,16 @@
+.text {
+	margin-left: 100px;
+	font-family: "manrope", sans-serif;
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: var(--color-primary-dark);
+	max-width: 800px;
+}
+.bold {
+	font-weight: 700;
+}
+.bro {
+	font-size: 26px;
+	font-weight: 700;
+}
