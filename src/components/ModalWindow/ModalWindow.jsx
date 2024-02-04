@@ -40,7 +40,7 @@ export const ModalWindow = ({ data, onClose }) => {
 				</svg>
 				<img className={css.img} src={data.img} alt="car" />
 				<div className={css.modalContent}>
-					<div>
+					<div className={css.group}>
 						<div className={css.title}>
 							<p>{data.make}</p>
 							<p className={css.colorAccent}>
@@ -67,7 +67,7 @@ export const ModalWindow = ({ data, onClose }) => {
 						</div>
 						<p className={css.description}>{data.description}</p>
 					</div>
-					<div>
+					<div className={css.group}>
 						<p className={css.text}>
 							Accessories and functionalities:
 						</p>
@@ -88,7 +88,7 @@ export const ModalWindow = ({ data, onClose }) => {
 							</ul>
 						</div>
 					</div>
-					<div>
+					<div className={css.group}>
 						<p className={css.text}>Rental Conditions: </p>
 						<ul className={css.conditionsList}>
 							<li className={css.condItem}>
@@ -97,8 +97,10 @@ export const ModalWindow = ({ data, onClose }) => {
 									{age[1]}
 								</span>
 							</li>
-							{conditions.map((item) => (
-								<li className={css.condItem}>{item}</li>
+							{conditions.map((item, index) => (
+								<li className={css.condItem} key={index}>
+									{item}
+								</li>
 							))}
 							<li className={css.condItem}>
 								Mileage:{" "}
