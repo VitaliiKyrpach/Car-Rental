@@ -34,7 +34,7 @@
 	margin-bottom: 24px;
 }
 .modalContent {
-	max-height: 42vh;
+	max-height: 45vh;
 	overflow: auto;
 }
 .modalContent::-webkit-scrollbar {
