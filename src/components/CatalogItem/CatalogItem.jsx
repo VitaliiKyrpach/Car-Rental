@@ -40,7 +40,7 @@ export const CatalogItem = ({ data, modal }) => {
 			</div>
 			<div className={css.title}>
 				<div className={css.titleWrapper}>
-					<p>{data.make}</p>
+					<p className={css.brand}>{data.make}</p>
 					<p className={css.colorAccent}>
 						<span className={css.carModel}>{data.model},</span>
 					</p>

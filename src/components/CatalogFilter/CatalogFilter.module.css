@@ -100,9 +100,15 @@
 	left: calc(50% + 44px);
 	width: 100px;
 }
+.fromText {
+	position: absolute;
+	left: 18px;
+	top: 13px;
+}
 .toText {
 	position: absolute;
 	left: calc(50% + 24px);
+	top: 13px;
 }
 .formBtn {
 	width: 136px;

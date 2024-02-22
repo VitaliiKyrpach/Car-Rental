@@ -60,11 +60,12 @@
 	font-weight: 500;
 	margin-bottom: 8px;
 }
+
 .carModel {
 	display: block;
-	max-width: 100px;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	/* max-width: 100px; */
+	/* overflow: hidden; */
+	/* text-overflow: ellipsis; */
 	white-space: nowrap;
 }
 .colorAccent {
@@ -105,7 +106,8 @@
 	position: absolute;
 	right: -6px;
 	height: 18px;
-	content: "|";
+	content: "";
+	border-right: 1px solid var(--color-secondary-dark);
 }
 .description {
 	line-height: 1.5;

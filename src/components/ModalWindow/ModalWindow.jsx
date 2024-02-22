@@ -5,7 +5,8 @@ export const ModalWindow = ({ data, onClose }) => {
 	const conditions = data.rentalConditions.split("\n");
 	const age = conditions[0].split(": ");
 	conditions.shift();
-	const fixMileage = data.mileage.toString().replace(/^(\d)/, "$1,");
+	// const fixMileage = data.mileage.toString().replace(/^(\d)/, "$1,");
+	const fixMileage = data.mileage.toLocaleString();
 	document.body.style.overflow = "hidden";
 	const handleEscapeKey = (event) => {
 		if (event.code === "Escape") {

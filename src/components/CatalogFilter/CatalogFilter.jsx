@@ -11,6 +11,7 @@ import { createPrice } from "../../helpers/priceMarkup.js";
 import { interFilter } from "../../redux/filterSlice.js";
 
 const initOpen = { brand: false, prices: false };
+const sortedBrands = brands.sort();
 
 export const CatalogFilter = () => {
 	const [brand, setQuery] = useState("");
@@ -24,6 +25,11 @@ export const CatalogFilter = () => {
 		const type = e.currentTarget.dataset.type;
 		setOpen((prev) => ({ ...initOpen, [type]: !prev[type] }));
 	};
+	const fixMileFrom = Number(mileageFrom).toLocaleString();
+	console.log(Number(mileageFrom));
+	const fixMileTO = mileageTo;
+	console.log(typeof fixMileFrom);
+	console.log(typeof fixMileTO.toLocaleString());
 	const handleQuery = (e) => {
 		const type = e.currentTarget.dataset.type;
 		type === "brand" && setQuery(e.target.value);
@@ -48,6 +54,18 @@ export const CatalogFilter = () => {
 		// setMileageFrom('');
 		// setMileageTo('');
 	};
+
+	const handleCloseDropdowns = (e) => {
+		if (
+			e.target.dataset.type === "prices" ||
+			e.target.dataset.type === "brand"
+		)
+			return;
+		if (!isOpen.brand && !isOpen.prices) return;
+		setOpen(initOpen);
+	};
+
+	document.addEventListener("click", handleCloseDropdowns);
 
 	return (
 		<div className={css.filters}>
@@ -79,7 +97,7 @@ export const CatalogFilter = () => {
 								onClick={handlePick}
 								data-type="brands"
 							>
-								{brands
+								{sortedBrands
 									.filter((item) =>
 										item
 											.toLowerCase()
@@ -101,7 +119,7 @@ export const CatalogFilter = () => {
 					<div
 						className={`${css.input} ${css.price}`}
 						onClick={handleOpen}
-						data-type="price"
+						data-type="prices"
 					>
 						To {price === "" ? "" : price}$
 					</div>
@@ -112,7 +130,7 @@ export const CatalogFilter = () => {
 					>
 						<use href={`${svg}#icon-arrow`}></use>
 					</svg>
-					{isOpen.price && (
+					{isOpen.prices && (
 						<div className={css.filterListWrapper}>
 							<ul
 								className={css.filterList}
@@ -132,7 +150,7 @@ export const CatalogFilter = () => {
 				</div>
 				<div className={css.mileage}>
 					<p className={css.title}>Сar mileage / km</p>
-					<p>From</p>
+					<p className={css.fromText}>From</p>
 					<p className={css.toText}>To</p>
 					<input
 						className={css.mileageFiled}
@@ -141,7 +159,7 @@ export const CatalogFilter = () => {
 						min={1}
 						data-type="mileFrom"
 						onChange={handleQuery}
-						value={mileageFrom}
+						value={fixMileFrom}
 						autoComplete="off"
 					/>
 					<input
@@ -151,7 +169,7 @@ export const CatalogFilter = () => {
 						min={Number(mileageFrom) + 1}
 						data-type="mileTo"
 						onChange={handleQuery}
-						value={mileageTo}
+						value={fixMileTO}
 						autoComplete="off"
 					/>
 				</div>
