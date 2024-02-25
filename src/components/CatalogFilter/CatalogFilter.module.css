@@ -81,7 +81,7 @@
 .mileageFiled {
 	position: absolute;
 	top: 13px;
-	left: 60px;
+	left: 62px;
 	font-size: 18px;
 	font-weight: 500;
 	line-height: 1.12;
@@ -97,7 +97,7 @@
 	margin: 0;
 }
 .to {
-	left: calc(50% + 44px);
+	left: calc(50% + 46px);
 	width: 100px;
 }
 .fromText {

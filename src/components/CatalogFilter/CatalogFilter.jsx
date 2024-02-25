@@ -25,11 +25,7 @@ export const CatalogFilter = () => {
 		const type = e.currentTarget.dataset.type;
 		setOpen((prev) => ({ ...initOpen, [type]: !prev[type] }));
 	};
-	const fixMileFrom = Number(mileageFrom).toLocaleString();
-	console.log(Number(mileageFrom));
-	const fixMileTO = mileageTo;
-	console.log(typeof fixMileFrom);
-	console.log(typeof fixMileTO.toLocaleString());
+
 	const handleQuery = (e) => {
 		const type = e.currentTarget.dataset.type;
 		type === "brand" && setQuery(e.target.value);
@@ -48,11 +44,6 @@ export const CatalogFilter = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		dispatch(interFilter({ brand, price, mileageFrom, mileageTo }));
-
-		// setBrand('');
-		// setPrice('');
-		// setMileageFrom('');
-		// setMileageTo('');
 	};
 
 	const handleCloseDropdowns = (e) => {
@@ -159,7 +150,7 @@ export const CatalogFilter = () => {
 						min={1}
 						data-type="mileFrom"
 						onChange={handleQuery}
-						value={fixMileFrom}
+						value={mileageFrom}
 						autoComplete="off"
 					/>
 					<input
@@ -169,7 +160,7 @@ export const CatalogFilter = () => {
 						min={Number(mileageFrom) + 1}
 						data-type="mileTo"
 						onChange={handleQuery}
-						value={fixMileTO}
+						value={mileageTo}
 						autoComplete="off"
 					/>
 				</div>

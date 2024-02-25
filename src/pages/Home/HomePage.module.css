@@ -1,5 +1,5 @@
 .home {
-	padding: 60px 0px;
+	padding: 30px 0px;
 	color: var(--color-primary-dark);
 }
 .homeWrapper {
@@ -13,15 +13,15 @@
 
 .dude {
 	position: absolute;
-	left: -10px;
+	left: 10px;
 	display: inline-block;
-	font-size: 80px;
-	font-weight: 900;
+	font-size: 40px;
+	font-weight: 600;
 	background-color: var(--color-light);
-	padding: 10px 50px;
+	padding: 8px 40px;
 	width: auto;
 	border-radius: 30px;
-	border: 3px solid black;
+	border: 2px solid black;
 	animation: dudeAnim 0.6s ease-out 0s 1 normal forwards;
 }
 @keyframes dudeAnim {
@@ -36,45 +36,44 @@
 }
 .car {
 	position: absolute;
-	top: 100px;
+	top: 50px;
 	display: inline-block;
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: 500;
 	background-color: var(--color-light);
-	padding: 5px 30px;
+	padding: 4px 25px;
 	width: auto;
 	border-radius: 20px;
-	border: 3px solid red;
+	border: 2px solid red;
 	animation: carAnim 1.2s ease-out 1s 1 normal forwards;
 	z-index: 2;
 	opacity: 0;
 }
 @keyframes carAnim {
 	0% {
-		left: -50px;
+		left: -20px;
 		opacity: 0;
 	}
 	50% {
 		opacity: 1;
 	}
 	100% {
-		left: 0px;
+		left: 10px;
 		opacity: 1;
 	}
 }
 .offer {
 	position: absolute;
-	bottom: 90px;
+	bottom: 15px;
 	display: inline-block;
-	font-size: 40px;
-	font-weight: 500;
+	font-size: 20px;
+	font-weight: 200;
 	background-color: var(--color-light);
-	padding: 5px 30px;
-	width: 600px;
+	padding: 4px 25px;
+	width: 350px;
 	border-radius: 40px;
-	border: 5px solid black;
-	animation: offerAnim 1.4s ease-out 3s 1 normal forwards,
-		offerAnimAfter 0.5s ease-out 6.2s 1 normal forwards;
+	border: 3px solid black;
+	animation: offerAnim 1.4s ease-out 3s 1 normal forwards;
 	z-index: 2;
 	opacity: 0;
 }
@@ -91,7 +90,7 @@
 		opacity: 1;
 	}
 	100% {
-		right: 0px;
+		right: -20px;
 		opacity: 1;
 	}
 }
@@ -109,13 +108,13 @@
 }
 .go {
 	position: absolute;
-	bottom: -10px;
+	bottom: 75px;
 	display: inline-block;
-	font-size: 90px;
+	font-size: 50px;
 	font-weight: 900;
 	background-color: var(--color-light);
-	padding: 5px 30px;
-	width: auto;
+	padding: 35px 30px;
+	width: 250px;
 	border-radius: 35px;
 	border: 6px solid green;
 	animation: goAnim 1.1s ease-out 6s 1 normal forwards;
@@ -133,5 +132,88 @@
 	100% {
 		right: -10px;
 		opacity: 1;
+	}
+}
+@media screen and (min-width: 768px) {
+	.home {
+		padding: 45px 0px;
+	}
+	.dude {
+		left: -10px;
+		font-size: 80px;
+		font-weight: 900;
+		padding: 10px 50px;
+		border: 3px solid black;
+	}
+	.car {
+		position: absolute;
+		top: 100px;
+		font-size: 30px;
+		padding: 5px 30px;
+		border: 3px solid red;
+	}
+	@keyframes carAnim {
+		0% {
+			left: -50px;
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			left: 0px;
+			opacity: 1;
+		}
+	}
+	.offer {
+		bottom: 90px;
+		font-size: 40px;
+		font-weight: 500;
+		padding: 5px 30px;
+		width: 600px;
+		border: 5px solid black;
+		animation: offerAnim 1.4s ease-out 3s 1 normal forwards,
+			offerAnimAfter 0.5s ease-out 6.2s 1 normal forwards;
+	}
+	@keyframes offerAnim {
+		0% {
+			right: -50px;
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			right: 0px;
+			opacity: 1;
+		}
+	}
+	.go {
+		bottom: -10px;
+		font-size: 90px;
+		width: auto;
+		border-radius: 35px;
+		border: 6px solid green;
+		animation: goAnim 1.1s ease-out 6s 1 normal forwards;
+		z-index: 3;
+		opacity: 0;
+	}
+	@keyframes goAnim {
+		0% {
+			right: -50px;
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			right: -10px;
+			opacity: 1;
+		}
+	}
+}
+@media screen and (min-width: 1280px) {
+	.home {
+		padding: 60px 0px;
 	}
 }
