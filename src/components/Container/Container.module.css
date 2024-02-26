@@ -3,10 +3,11 @@
 	padding: 0;
 	max-width: 1440px;
 	width: 100%;
+	overflow: hidden;
 }
 @media screen and (min-width: 768px) {
 	.mainContainer {
-		padding: 0 128px;
+		padding: 0 32px;
 	}
 }
 @media screen and (min-width: 1280px) {

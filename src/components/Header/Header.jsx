@@ -1,14 +1,22 @@
 import svg from "../../img/sprite.svg";
 import css from "./Header.module.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Container } from "../Container/Container";
-import { useSelector } from "react-redux";
-import { selectFavorites } from "../../redux/catalogSelectors";
+// import { useSelector } from "react-redux";
+// import { selectFavorites } from "../../redux/catalogSelectors";
+import { UserNav } from "../UserNav/UserNav";
+import { MobileMenu } from "../MobileMenu/MobileMenu";
+import { useState } from "react";
 
 export const Header = () => {
-	const favorites = useSelector(selectFavorites);
-	const classNameFunc = ({ isActive }) =>
-		`${css.link} ${isActive && css.linkActive}`;
+	const [isOpen, setIsOpen] = useState(false);
+	const handleOpen = () => {
+		setIsOpen(prev => !prev)
+		// console.log('open')
+	}
+	// const favorites = useSelector(selectFavorites);
+	// const classNameFunc = ({ isActive }) =>
+	// 	`${css.link} ${isActive && css.linkActive}`;
 	return (
 		<header className={css.header}>
 			<Container>
@@ -19,7 +27,7 @@ export const Header = () => {
 						</svg>
 						<span className={css.text}>CarRental</span>
 					</Link>
-					<div className={css.navBar}>
+					{/* <div className={css.navBar}>
 						<NavLink className={classNameFunc} to="/">
 							Home
 						</NavLink>
@@ -34,9 +42,16 @@ export const Header = () => {
 						>
 							Favorites
 						</NavLink>
-					</div>
+					</div> */}
+					<UserNav page='wide'/>
+					<button className={css.burger} onClick={handleOpen}>
+						<svg className={css.burgerSVG}>
+							<use href={`${svg}#icon-burger-menu`}></use>
+						</svg>
+					</button>
 				</nav>
 			</Container>
+			<MobileMenu open={isOpen} setopen={handleOpen}/>
 		</header>
 	);
 };

@@ -82,7 +82,7 @@ export const CatalogFilter = () => {
 						<use href={`${svg}#icon-arrow`}></use>
 					</svg>
 					{isOpen.brand && (
-						<div className={css.filterListWrapper}>
+						<div className={`${css.filterListWrapper} ${css.brand}`}>
 							<ul
 								className={css.filterList}
 								onClick={handlePick}
@@ -122,7 +122,7 @@ export const CatalogFilter = () => {
 						<use href={`${svg}#icon-arrow`}></use>
 					</svg>
 					{isOpen.prices && (
-						<div className={css.filterListWrapper}>
+						<div className={`${css.filterListWrapper} ${css.price}`}>
 							<ul
 								className={css.filterList}
 								onClick={handlePick}
