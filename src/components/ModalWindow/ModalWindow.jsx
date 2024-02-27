@@ -1,5 +1,6 @@
 import css from "./ModalWindow.module.css";
 import svg from "../../img/sprite.svg";
+import ReactDOM from "react-dom";
 export const ModalWindow = ({ data, onClose }) => {
 	const address = data.address.split(", ");
 	const conditions = data.rentalConditions.split("\n");
@@ -24,7 +25,7 @@ export const ModalWindow = ({ data, onClose }) => {
 			onClose();
 		}
 	};
-	return (
+	return ReactDOM.createPortal(
 		<div
 			className={css.backdrop}
 			onClick={handleClose}
@@ -38,6 +39,7 @@ export const ModalWindow = ({ data, onClose }) => {
 				>
 					<use href={`${svg}#icon-x`}></use>
 				</svg>
+				<div className={css.modalWrapper}>
 				<img className={css.img} src={data.img} alt="car" />
 				<div className={css.modalContent}>
 					<div className={css.group}>
@@ -122,7 +124,9 @@ export const ModalWindow = ({ data, onClose }) => {
 						</a>
 					</button>
 				</div>
+				</div>
 			</div>
-		</div>
+		</div>,
+		document.getElementById('portal')
 	);
 };

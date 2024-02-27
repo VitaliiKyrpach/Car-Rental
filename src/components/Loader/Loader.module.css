@@ -3,8 +3,8 @@
 	left: calc(50% - 100px);
 	top: 400px;
 	display: block;
-	width: 200px;
-	height: 200px;
+	width: 150px;
+	height: 150px;
 	animation: loader 0.8s ease-out infinite;
 }
 
@@ -20,5 +20,11 @@
 	}
 	100% {
 		transform: rotate(360deg);
+	}
+}
+@media screen and (min-width:68px) {
+	.loader {
+		width: 200px;
+		height: 200px;
 	}
 }

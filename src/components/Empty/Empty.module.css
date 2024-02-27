@@ -1,5 +1,8 @@
 .text {
-	margin-left: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 30px;
+	padding-right: 30px;
 	font-family: "manrope", sans-serif;
 	font-size: 20px;
 	font-weight: 500;
@@ -13,4 +16,9 @@
 .bro {
 	font-size: 26px;
 	font-weight: 700;
+}
+@media screen and (min-width: 1024px) {
+	.text {
+		padding: 0;
+	}
 }
