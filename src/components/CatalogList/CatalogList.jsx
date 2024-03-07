@@ -20,6 +20,7 @@ export const CatalogList = ({ data }) => {
 	const handleClose = (e) => {
 		setIsModal(false);
 	};
+	console.log(data);
 	return (
 		<>
 			<ul className={css.list}>
