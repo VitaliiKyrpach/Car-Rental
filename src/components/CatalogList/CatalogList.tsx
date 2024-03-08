@@ -25,7 +25,6 @@ export const CatalogList: FC<CatalogListProps> = ({ data }) => {
 	const handleClose = () => {
 		setIsModal(false);
 	};
-	console.log(data);
 	return (
 		<>
 			<ul className={css.list}>

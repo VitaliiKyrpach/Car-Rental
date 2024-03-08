@@ -34,10 +34,10 @@ const Favorites = () => {
 		<div className={css.favorites}>
 			<Container>
 				<CatalogFilter />
-				{filteredData.length ? (
-					<Empty case={`${favorites.length ? "empty" : "null"}`} />
-				) : (
+				{filteredData.length && filteredData.length > 0 ? (
 					<></>
+				) : (
+					<Empty case={`${favorites.length ? "empty" : "null"}`} />
 				)}
 				<CatalogList data={filteredData} />
 			</Container>

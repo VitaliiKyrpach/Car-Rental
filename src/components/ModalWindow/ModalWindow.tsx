@@ -51,7 +51,6 @@ export const ModalWindow: FC<ModalWindowProps> = ({
 			!(e.target instanceof HTMLDivElement)
 		)
 			return;
-		console.log(e.target.nodeName);
 		if (
 			e.target.dataset.type === "backdrop" ||
 			e.target.dataset.type === "close-modal"
