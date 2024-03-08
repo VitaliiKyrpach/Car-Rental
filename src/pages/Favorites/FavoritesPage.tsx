@@ -1,5 +1,5 @@
 import css from "./FavoritesPage.module.css";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../../components/Container/Container";
 import {
 	selectFavorites,
@@ -11,15 +11,17 @@ import { filterCards } from "../../helpers/filterCards";
 import { useEffect } from "react";
 import { interFilter } from "../../redux/filterSlice";
 import { Empty } from "../../components/Empty/Empty";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { Filters } from "../../redux/filterSlice";
 
 const Favorites = () => {
-	const favorites = useSelector(selectFavorites);
-	const dispatch = useDispatch();
-	const filters = useSelector(selectFilters);
+	const favorites = useAppSelector(selectFavorites);
+	const dispatch = useAppDispatch();
+	const filters = useAppSelector(selectFilters);
 	const filteredData = filterCards(favorites, filters);
 
 	useEffect(() => {
-		const initFilters = {
+		const initFilters: Filters = {
 			brand: "",
 			price: null,
 			mileageFrom: null,
@@ -32,8 +34,10 @@ const Favorites = () => {
 		<div className={css.favorites}>
 			<Container>
 				<CatalogFilter />
-				{!filteredData.length && (
+				{filteredData.length ? (
 					<Empty case={`${favorites.length ? "empty" : "null"}`} />
+				) : (
+					<></>
 				)}
 				<CatalogList data={filteredData} />
 			</Container>

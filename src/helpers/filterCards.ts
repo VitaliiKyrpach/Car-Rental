@@ -1,4 +1,10 @@
-export const filterCards = (cards, filters) => {
+import { Card } from "../redux/catalogSlice";
+import { Filters } from "../redux/filterSlice";
+
+export const filterCards = (
+	cards: Card[],
+	filters: Filters
+): Card[] => {
 	const { brand, price, mileageFrom, mileageTo } = filters;
 	return cards
 		.filter((card) =>

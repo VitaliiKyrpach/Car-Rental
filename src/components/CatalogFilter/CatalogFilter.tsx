@@ -1,39 +1,59 @@
-import { useMemo, useState } from "react";
+import {
+	ChangeEvent,
+	FormEvent,
+	MouseEvent,
+	useMemo,
+	useState,
+} from "react";
 import css from "./CatalogFilter.module.css";
 import svg from "../../img/sprite.svg";
 import brands from "../../helpers/makes.json";
-import { useDispatch, useSelector } from "react-redux";
-import {
-	selectCatalog,
-	// selectFilters,
-} from "../../redux/catalogSelectors";
-import { createPrice } from "../../helpers/priceMarkup.js";
-import { interFilter } from "../../redux/filterSlice.js";
+import { selectCatalog } from "../../redux/catalogSelectors";
+import { createPrice } from "../../helpers/priceMarkup";
+import { interFilter } from "../../redux/filterSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
-const initOpen = { brand: false, prices: false };
+// interface IinitOpent {
+// 	brand: boolean;
+// 	prices: boolean;
+// }
+interface IinitOpent {
+	[key: string]: boolean;
+}
+const initOpen: IinitOpent = { brand: false, prices: false };
 const sortedBrands = brands.sort();
 
 export const CatalogFilter = () => {
-	const [brand, setQuery] = useState("");
-	const [price, setPrices] = useState("");
-	const [mileageFrom, setMileageFrom] = useState("");
-	const [mileageTo, setMileageTo] = useState("");
-	const [isOpen, setOpen] = useState(initOpen);
-	const cars = useSelector(selectCatalog);
-	const dispatch = useDispatch();
-	const handleOpen = (e) => {
-		const type = e.currentTarget.dataset.type;
+	const [brand, setQuery] = useState<string>("");
+	const [price, setPrices] = useState<string>("");
+	const [mileageFrom, setMileageFrom] = useState<string | number>("");
+	const [mileageTo, setMileageTo] = useState<string | number>("");
+	const [isOpen, setOpen] = useState<IinitOpent>(initOpen);
+	const cars = useAppSelector(selectCatalog);
+	const dispatch = useAppDispatch();
+	const handleOpen = (e: MouseEvent<HTMLDivElement>) => {
+		// if (!(e.target instanceof HTMLDivElement)) {
+		// 	return;
+		// }
+		// if (!e.currentTarget.dataset) return;
+		// const type: string = e.currentTarget.dataset.type;
+		const type: string | undefined = e.currentTarget.dataset.type;
+		if (typeof type === "undefined") {
+			return;
+		}
 		setOpen((prev) => ({ ...initOpen, [type]: !prev[type] }));
 	};
 
-	const handleQuery = (e) => {
+	const handleQuery = (e: ChangeEvent<HTMLInputElement>) => {
 		const type = e.currentTarget.dataset.type;
 		type === "brand" && setQuery(e.target.value);
 		type === "mileFrom" && setMileageFrom(e.target.value);
 		type === "mileTo" && setMileageTo(e.target.value);
 	};
-	const handlePick = (e) => {
+	const handlePick = (e: MouseEvent<HTMLUListElement>) => {
+		if (!(e.target instanceof HTMLLIElement)) return;
 		if (e.target.nodeName !== "LI") return;
+		if (!e.target.textContent) return;
 		const type = e.currentTarget.dataset.type;
 		const value = e.target.textContent;
 		type === "brands" ? setQuery(value) : setPrices(value);
@@ -41,12 +61,13 @@ export const CatalogFilter = () => {
 	};
 	const priceArr = useMemo(() => createPrice(cars), [cars]);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		dispatch(interFilter({ brand, price, mileageFrom, mileageTo }));
 	};
 
-	const handleCloseDropdowns = (e) => {
+	const handleCloseDropdowns = (e: Event): void => {
+		if (!(e.target instanceof HTMLElement)) return;
 		if (
 			e.target.dataset.type === "prices" ||
 			e.target.dataset.type === "brand"
@@ -55,6 +76,14 @@ export const CatalogFilter = () => {
 		if (!isOpen.brand && !isOpen.prices) return;
 		setOpen(initOpen);
 	};
+	// const handleCloseDropdowns: EventListener = (e) => {
+	// 	const event = e as MouseEvent<HTMLElement>;
+	// 	const target = event.target as HTMLElement;
+	// 	if (!target.dataset) return;
+	// 	if (target.dataset.type === "prices" || target.dataset.type === "brand") return;
+	// 	if (!isOpen.brand && !isOpen.prices) return;
+	// 	setOpen(initOpen);
+	// };
 
 	document.addEventListener("click", handleCloseDropdowns);
 

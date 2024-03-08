@@ -12,7 +12,7 @@ import {
 } from "redux-persist";
 
 import { filterReducer } from "./filterSlice";
-import { reducer } from "./catalogReducer";
+import { CatReducer, reducer } from "./catalogReducer";
 
 const persistConfig = {
 	key: "catalog",
@@ -22,7 +22,7 @@ const persistConfig = {
 
 export const store = configureStore({
 	reducer: {
-		catalog: persistReducer(persistConfig, reducer),
+		catalog: persistReducer<CatReducer>(persistConfig, reducer),
 		filters: filterReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
@@ -41,3 +41,5 @@ export const store = configureStore({
 	// devTools: process.env.NODE_ENV === "development",
 });
 export const persistor = persistStore(store);
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

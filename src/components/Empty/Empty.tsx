@@ -1,5 +1,5 @@
 import css from "./Empty.module.css";
-export const Empty = (prop) => {
+export const Empty = (prop: { case: "empty" | "null" }) => {
 	if (prop.case === "empty") {
 		return (
 			<p className={css.text}>

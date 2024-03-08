@@ -1,5 +1,5 @@
 import css from "./CatalogPage.module.css";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import { Container } from "../../components/Container/Container";
 import { useEffect } from "react";
 import { fetchCatalog } from "../../redux/catalogOperations";
@@ -14,12 +14,13 @@ import { filterCards } from "../../helpers/filterCards";
 import { interFilter } from "../../redux/filterSlice";
 import { Loader } from "../../components/Loader/Loader";
 import { Empty } from "../../components/Empty/Empty";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 
 const Catalog = () => {
-	const data = useSelector(selectCatalog);
-	const filters = useSelector(selectFilters);
-	const isLoad = useSelector(selectIsLoading);
-	const dispatch = useDispatch();
+	const data = useAppSelector(selectCatalog);
+	const filters = useAppSelector(selectFilters);
+	const isLoad = useAppSelector(selectIsLoading);
+	const dispatch = useAppDispatch();
 	useEffect(() => {
 		if (!data || !data.length) {
 			dispatch(fetchCatalog());
@@ -44,7 +45,9 @@ const Catalog = () => {
 				{isLoad && <Loader />}
 				{data.length && !filteredData.length ? (
 					<Empty case={"empty"} />
-				) : null}
+				) : (
+					<></>
+				)}
 				<CatalogList data={filteredData} />
 			</Container>
 		</div>

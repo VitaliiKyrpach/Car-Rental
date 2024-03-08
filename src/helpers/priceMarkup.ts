@@ -1,4 +1,6 @@
-export const createPrice = (data) => {
+import { Card } from "../redux/catalogSlice";
+
+export const createPrice = (data: Card[]): number[] => {
 	const dataPrice = data.map(({ rentalPrice }) =>
 		Number(rentalPrice.replace(/[^0-9]/g, ""))
 	);

@@ -6,3 +6,4 @@ export const reducer = catalogReducer;
 // 	catalog: catalogReducer,
 // 	filter: filterReducer,
 // });
+export type CatReducer = ReturnType<typeof reducer>;

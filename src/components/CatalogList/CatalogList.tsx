@@ -1,23 +1,28 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { CatalogItem } from "../CatalogItem/CatalogItem";
 import { PaginationButton } from "../PaginationButton/PaginationButton";
 import css from "./CatalogList.module.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { selectIsLoading } from "../../redux/catalogSelectors";
 import { ModalWindow } from "../ModalWindow/ModalWindow";
-export const CatalogList = ({ data }) => {
-	const [isModal, setIsModal] = useState(false);
-	const [modalData, setModalData] = useState(null);
-	const [visible, setVisible] = useState(12);
-	const isLoading = useSelector(selectIsLoading);
+import { Card } from "../../redux/catalogSlice";
+import { useAppSelector } from "../../hooks";
+interface CatalogListProps {
+	data: Card[];
+}
+export const CatalogList: FC<CatalogListProps> = ({ data }) => {
+	const [isModal, setIsModal] = useState<boolean>(false);
+	const [modalData, setModalData] = useState<null | Card>(null);
+	const [visible, setVisible] = useState<number>(12);
+	const isLoading = useAppSelector(selectIsLoading);
 	const handlePagination = () => {
 		setVisible((prev) => prev + 12);
 	};
-	const handleModal = (data) => {
+	const handleModal = (data: Card) => {
 		setIsModal(true);
 		setModalData(data);
 	};
-	const handleClose = (e) => {
+	const handleClose = () => {
 		setIsModal(false);
 	};
 	return (

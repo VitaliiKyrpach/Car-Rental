@@ -1,6 +1,6 @@
 import svg from "../../img/sprite.svg";
 import css from "./Header.module.css";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container } from "../Container/Container";
 // import { useSelector } from "react-redux";
 // import { selectFavorites } from "../../redux/catalogSelectors";
@@ -9,11 +9,10 @@ import { MobileMenu } from "../MobileMenu/MobileMenu";
 import { useState } from "react";
 
 export const Header = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const handleOpen = () => {
-		setIsOpen(prev => !prev)
-		// console.log('open')
-	}
+		setIsOpen((prev) => !prev);
+	};
 	// const favorites = useSelector(selectFavorites);
 	// const classNameFunc = ({ isActive }) =>
 	// 	`${css.link} ${isActive && css.linkActive}`;
@@ -43,7 +42,7 @@ export const Header = () => {
 							Favorites
 						</NavLink>
 					</div> */}
-					<UserNav page='wide'/>
+					<UserNav page="wide" />
 					<button className={css.burger} onClick={handleOpen}>
 						<svg className={css.burgerSVG}>
 							<use href={`${svg}#icon-burger-menu`}></use>
@@ -51,7 +50,7 @@ export const Header = () => {
 					</button>
 				</nav>
 			</Container>
-			<MobileMenu open={isOpen} setopen={handleOpen}/>
+			<MobileMenu open={isOpen} setopen={handleOpen} />
 		</header>
 	);
 };

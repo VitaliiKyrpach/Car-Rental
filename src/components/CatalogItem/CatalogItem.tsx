@@ -1,17 +1,25 @@
 import css from "./CatalogItem.module.css";
 import svg from "../../img/sprite.svg";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { FC, useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import { selectFavorites } from "../../redux/catalogSelectors";
-import { addCard, removeCard } from "../../redux/catalogSlice";
-
-export const CatalogItem = ({ data, modal }) => {
-	const [like, setLike] = useState(false);
-	const dispatch = useDispatch();
-	const favorites = useSelector(selectFavorites);
+import { Card, addCard, removeCard } from "../../redux/catalogSlice";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+interface CatalogItemProps {
+	data: Card;
+	modal: (data: Card) => void;
+}
+export const CatalogItem: FC<CatalogItemProps> = ({
+	data,
+	modal,
+}) => {
+	const [like, setLike] = useState<boolean>(false);
+	const dispatch = useAppDispatch();
+	const favorites = useAppSelector(selectFavorites);
 	const address = data.address.split(", ");
-	const isLiked =
-		favorites.length && favorites.find((card) => card.id === data.id);
+	const isLiked: boolean =
+		!!favorites.length &&
+		!!favorites.find((card) => card.id === data.id);
 
 	useEffect(() => {
 		isLiked ? setLike(true) : setLike(false);
